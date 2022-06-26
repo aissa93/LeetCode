@@ -20,13 +20,13 @@ public class Solution
             }
             index_big--;
         }
-            while(index_2 >= 0)
-            {
-                nums1[index_big] = nums2[index_2];
-                index_1--;
-                index_2--;
-                index_big--;
-            }
+        while(index_2 >= 0)
+        {
+            nums1[index_big] = nums2[index_2];
+            index_1--;
+            index_2--;
+            index_big--;
         }
+    }
     
 }
