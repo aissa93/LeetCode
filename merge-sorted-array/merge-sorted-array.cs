@@ -1,50 +1,30 @@
 public class Solution 
 {
-    public void Merge(int[] nums1, int m, int[] nums2, int n) 
-    {
-        int[] actualNums1 = this.copyArray(nums1, m);
-        
-        int index1 = 0, index2 = 0;
-        if(m == 1 && nums1[0] == 0)
-            nums1[0] = nums2[0];
-        else
+    public void Merge(int[] nums1, int m, int[] nums2, int n)
+    { 
+        int i;
+        if(n>0)
         {
-            for(int i = 0; i< nums1.Length && n >0; i++)
+            for(i = nums1.Length -1; i >= 0 && n>0 && m>0;i--)
             {
-                if(index1 == m )
+                if(nums2[n-1] > nums1[m-1])
                 {
-                    nums1[i] = nums2[index2];
-                    index2++;
-                }
-                else if(index2 == n)
-                {
-                    nums1[i] = actualNums1[index1];
-                    index1++;            
-                }
-                else if(actualNums1[index1] < nums2[index2])
-                {
-                
-                    nums1[i] = actualNums1[index1];
-                    index1++;
+                    nums1[i] = nums2[n-1];
+                    n--;
                 }
                 else
                 {
-                    nums1[i] = nums2[index2];
-                    index2++;
+                    nums1[i] = nums1[m-1];
+                    m--;
+                
                 }
-            
+            }
+            while(i >= 0 && n> 0)
+            {
+                nums1[i] = nums2[n-1];
+                n--;
+                i--;
             }
         }
-    }
-
-
-    int[] copyArray(int[] nums1, int m)
-    {
-        int[] actualNums1 = new int[m];
-        for (int i = 0; i < m; i++)
-        {
-            actualNums1[i] = nums1[i];
-        }
-        return actualNums1;
     }
 }
