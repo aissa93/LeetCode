@@ -1,26 +1,16 @@
-public class Solution {
-public bool CheckIfExist(int[] arr) {
-        for(int i =0; i< arr.Length; i++)
+public class Solution 
+{
+    public bool CheckIfExist(int[] arr)
+    {
+        HashSet<int> addedNumers = new HashSet<int>();
+        foreach( int e in arr)
         {
-            if(this.DoubleExist(arr, arr[i], i))
+            if(addedNumers.Contains(e*2) || (addedNumers.Contains(e/2) && e%2 == 0))
                 return true;
+            addedNumers.Add(e);
         }
 
         return false;
-    }
-    public bool DoubleExist(int[]arr, int num, int index)
-    {
-        bool result = false;
-        double halfNum = num / 2.0;
-        int doubleNum = num *2;
-        for(int i =0; i< arr.Length; i++)
-        {
-            if(i == index)
-                continue;
-            if(arr[i] == halfNum || arr[i] == doubleNum)
-                result = true;
-        }
-        return result;
     }
 
 }
